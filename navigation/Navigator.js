@@ -22,7 +22,7 @@ function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="home" component={Categories} />
-      <Stack.Screen name="categoriesmeal" component={CategoriesMeal} />
+      <Stack.Screen name="CategoryMeals" component={CategoriesMeal} />
       <Stack.Screen name="mealdetail" component={MealDetail} />
     </Stack.Navigator>
   );
