@@ -5,6 +5,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
@@ -40,4 +41,5 @@ const styles = StyleSheet.create({
     height: 150,
   },
 });
+
 export default Categories;
