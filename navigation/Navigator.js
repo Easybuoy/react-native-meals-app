@@ -1,15 +1,15 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Platform } from "react-native";
 
 import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
 import MealDetail from "../screens/MealDetail";
 import Color from "../constants/Color";
-import { Platform } from "react-native";
-
+import { CATEGORIES } from "../data/dummy-data";
 const Stack = createStackNavigator();
 
-function MyStack() {
+function MyStack({ prop }) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -19,6 +19,7 @@ function MyStack() {
         },
         headerTintColor:
           Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
+        headerBackTitle: "Back",
       }}
     >
       <Stack.Screen
@@ -28,7 +29,20 @@ function MyStack() {
           title: "Meal Categories",
         }}
       />
-      <Stack.Screen name="CategoryMeals" component={CategoriesMeal} />
+      <Stack.Screen
+        name="CategoryMeals"
+        component={CategoriesMeal}
+        options={({ route }) => {
+          const { categoryId } = route.params;
+
+          const selectedCategory = CATEGORIES.find(
+            (category) => category.id === categoryId
+          );
+          return {
+            title: selectedCategory.title,
+          };
+        }}
+      />
       <Stack.Screen name="mealdetail" component={MealDetail} />
     </Stack.Navigator>
   );
