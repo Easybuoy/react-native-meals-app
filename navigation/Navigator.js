@@ -2,11 +2,12 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
 import MealDetail from "../screens/MealDetail";
-
+import Favourites from "../screens/Favourites";
 import HeaderButton from "../components/HeaderButton";
 import Color from "../constants/Color";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
@@ -72,4 +73,13 @@ const MyStack = ({ prop }) => {
   );
 };
 
-export default MyStack;
+const Tab = createBottomTabNavigator();
+
+const MyTab = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Meals" component={MyStack} />
+    <Tab.Screen name="Favourites" component={Favourites} />
+  </Tab.Navigator>
+);
+
+export { MyStack, MyTab };
