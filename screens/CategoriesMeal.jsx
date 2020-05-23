@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
+import Meal from "../models/meal";
 const CategoriesMeal = ({ navigation, route }) => {
   const { categoryId } = route.params;
 
@@ -9,11 +10,17 @@ const CategoriesMeal = ({ navigation, route }) => {
     (category) => category.id === categoryId
   );
 
-  //   console.log(categoryId);
-  //   console.log(selectedCategory);
+  const displayMeals = MEALS.filter(
+    (meal) => meal.categoryId.indexOf(categoryId) >= 0
+  );
+  console.log(displayMeals);
+
+  const renderMealItem = (itemData) => {
+  return (<View><Text>{itemData.item.title}</Text></View>)
+  }
   return (
     <View style={styles.screen}>
-      <Text>Categories Meal</Text>
+      <FlatList data={displayMeals} renderItem={renderMealItem} />
     </View>
   );
 };
