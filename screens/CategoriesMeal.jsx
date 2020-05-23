@@ -24,6 +24,11 @@ const CategoriesMeal = ({ navigation, route }) => {
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}
         image={itemData.item.imageUrl}
+        onSelectMeal={() => {
+          navigation.navigate("Meal Detail", {
+            mealId: itemData.item.id,
+          });
+        }}
       />
     );
   };
@@ -50,7 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 10
+    width: "100%",
+    padding: 10,
   },
 });
 export default CategoriesMeal;

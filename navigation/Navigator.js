@@ -43,7 +43,7 @@ function MyStack({ prop }) {
           };
         }}
       />
-      <Stack.Screen name="mealdetail" component={MealDetail} />
+      <Stack.Screen name="Meal Detail" component={MealDetail} />
     </Stack.Navigator>
   );
 }
