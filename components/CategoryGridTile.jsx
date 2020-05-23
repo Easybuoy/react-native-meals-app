@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.26,
     shadowRadius: 10,
     elevation: 3,
+    padding: 10,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
   },
   gridItem: {
     flex: 1,
