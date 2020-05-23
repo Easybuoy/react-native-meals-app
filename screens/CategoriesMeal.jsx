@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../data/dummy-data";
+import MealItem from '../components/MealItem'
 import Meal from "../models/meal";
 const CategoriesMeal = ({ navigation, route }) => {
   const { categoryId } = route.params;
@@ -16,11 +17,11 @@ const CategoriesMeal = ({ navigation, route }) => {
   console.log(displayMeals);
 
   const renderMealItem = (itemData) => {
-  return (<View><Text>{itemData.item.title}</Text></View>)
+  return (<MealItem title={itemData.item.title} />)
   }
   return (
     <View style={styles.screen}>
-      <FlatList data={displayMeals} renderItem={renderMealItem} />
+      <FlatList data={displayMeals} renderItem={renderMealItem} style={{width: '100%'}} />
     </View>
   );
 };
