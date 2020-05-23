@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import Categories from "../screens/Categories";
@@ -74,7 +75,10 @@ const MyStack = ({ prop }) => {
   );
 };
 
-const Tab = createBottomTabNavigator();
+const Tab =
+  Platform.OS === "android"
+    ? createMaterialBottomTabNavigator()
+    : createBottomTabNavigator();
 
 const MyTab = () => (
   <Tab.Navigator
@@ -84,11 +88,9 @@ const MyTab = () => (
         let iconName;
 
         if (route.name === "Meals") {
-          iconName = focused
-            ? "ios-restaurant"
-            : "ios-information-circle-outline";
+          iconName = "ios-restaurant";
         } else if (route.name === "Favourites") {
-          iconName = focused ? "ios-list-box" : "ios-list";
+          iconName = "ios-star";
         }
 
         // You can return any component that you like here!
