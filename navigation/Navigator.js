@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
@@ -76,7 +77,25 @@ const MyStack = ({ prop }) => {
 const Tab = createBottomTabNavigator();
 
 const MyTab = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    tabBarOptions={{ activeTintColor: Color.SECONDARY }}
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === "Meals") {
+          iconName = focused
+            ? "ios-restaurant"
+            : "ios-information-circle-outline";
+        } else if (route.name === "Favourites") {
+          iconName = focused ? "ios-list-box" : "ios-list";
+        }
+
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+    })}
+  >
     <Tab.Screen name="Meals" component={MyStack} />
     <Tab.Screen name="Favourites" component={Favourites} />
   </Tab.Navigator>
