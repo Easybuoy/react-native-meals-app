@@ -16,9 +16,11 @@ const Categories = ({ navigation }) => {
     return (
       <CategoryGridTile
         title={itemData.item.title}
-        onSelect={navigation.navigate("CategoryMeals", {
-          categoryId: itemData.item.id,
-        })}
+        onSelect={() => {
+          navigation.navigate("CategoryMeals", {
+            categoryId: itemData.item.id,
+          });
+        }}
         color={itemData.item.color}
       />
     );
