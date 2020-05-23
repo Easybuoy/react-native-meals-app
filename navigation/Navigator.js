@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Platform } from "react-native";
+import { Text, Platform } from "react-native";
 
 import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
@@ -9,7 +9,7 @@ import Color from "../constants/Color";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 const Stack = createStackNavigator();
 
-function MyStack({ prop }) {
+const MyStack = ({ prop }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -52,11 +52,12 @@ function MyStack({ prop }) {
           const selectedCategory = MEALS.find((meal) => meal.id === mealId);
           return {
             title: selectedCategory.title,
+            headerRight: () => <Text>Hii</Text>,
           };
         }}
       />
     </Stack.Navigator>
   );
-}
+};
 
 export default MyStack;
