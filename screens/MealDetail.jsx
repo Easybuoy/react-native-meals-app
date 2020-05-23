@@ -1,7 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { MEALS } from "../data/dummy-data";
 
-const MealDetail = () => {
+const MealDetail = ({ route }) => {
+  const { mealId } = route.params;
+  console.log(mealId);
+
+  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   return (
     <View style={styles.screen}>
       <Text>MealDetail Screen</Text>

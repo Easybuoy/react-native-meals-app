@@ -6,7 +6,7 @@ import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
 import MealDetail from "../screens/MealDetail";
 import Color from "../constants/Color";
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 const Stack = createStackNavigator();
 
 function MyStack({ prop }) {
@@ -43,7 +43,18 @@ function MyStack({ prop }) {
           };
         }}
       />
-      <Stack.Screen name="Meal Detail" component={MealDetail} />
+      <Stack.Screen
+        name="Meal Detail"
+        component={MealDetail}
+        options={({ route }) => {
+          const { mealId } = route.params;
+
+          const selectedCategory = MEALS.find((meal) => meal.id === mealId);
+          return {
+            title: selectedCategory.title,
+          };
+        }}
+      />
     </Stack.Navigator>
   );
 }

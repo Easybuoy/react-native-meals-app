@@ -14,7 +14,6 @@ const CategoriesMeal = ({ navigation, route }) => {
   const displayMeals = MEALS.filter(
     (meal) => meal.categoryId.indexOf(categoryId) >= 0
   );
-  console.log(displayMeals);
 
   const renderMealItem = (itemData) => {
     return (
