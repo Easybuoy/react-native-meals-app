@@ -31,11 +31,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderRadius: 10,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.26,
-    shadowRadius: 10,
-    elevation: 3,
     padding: 12,
     alignItems: "flex-end",
     justifyContent: "flex-end",
@@ -50,7 +45,13 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 150,
     borderRadius: 10,
-    overflow: "hidden",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.26,
+    shadowRadius: 10,
+    elevation: 5,
+    overflow:
+      Platform.OS === "android" && Platform.Version > 21 ? "hidden" : "visible",
   },
 });
 
