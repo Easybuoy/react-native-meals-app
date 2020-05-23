@@ -8,21 +8,19 @@ import {
   Platform,
 } from "react-native";
 
+import CategoryGridTile from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 
 const Categories = ({ navigation }) => {
   const renderGridItem = (itemData) => {
     return (
-      <TouchableOpacity
-        style={styles.gridItem}
-        onPress={() =>
-          navigation.navigate("CategoryMeals", { categoryId: itemData.item.id })
-        }
-      >
-        <View>
-          <Text>{itemData.item.title}</Text>
-        </View>
-      </TouchableOpacity>
+      <CategoryGridTile
+        title={itemData.item.title}
+        onSelect={navigation.navigate("CategoryMeals", {
+          categoryId: itemData.item.id,
+        })}
+        color={itemData.item.color}
+      />
     );
   };
 
@@ -36,11 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  gridItem: {
-    flex: 1,
-    margin: 10,
-    height: 150,
   },
 });
 
