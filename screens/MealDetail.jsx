@@ -9,7 +9,7 @@ const MealDetail = ({ route }) => {
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   return (
     <View style={styles.screen}>
-      <Text>MealDetail Screen</Text>
+      <Text>{selectedMeal.title}n</Text>
     </View>
   );
 };
