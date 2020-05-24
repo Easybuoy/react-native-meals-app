@@ -4,19 +4,21 @@ import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 
 import Categories from "../screens/Categories";
 import CategoriesMeal from "../screens/CategoriesMeal";
 import MealDetail from "../screens/MealDetail";
 import Favourites from "../screens/Favourites";
+import Filters from "../screens/Fliters";
 import HeaderButton from "../components/HeaderButton";
 import Color from "../constants/Color";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 const Stack = createStackNavigator();
 
-const MyStack = ({ prop }) => {
+const MyStackNavigator = ({ prop }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -114,12 +116,30 @@ const FavouritesStack = ({ prop }) => {
   );
 };
 
+const FilterStack = ({ prop }) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor:
+            Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
+        },
+        headerTintColor:
+          Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
+        headerBackTitle: "Back",
+      }}
+    >
+      <Stack.Screen name="Filters" component={Filters} />
+    </Stack.Navigator>
+  );
+};
+
 const Tab =
   Platform.OS === "android"
     ? createMaterialBottomTabNavigator()
     : createBottomTabNavigator();
 
-const MyTab = () => (
+const MyTabNavigator = () => (
   <Tab.Navigator
     shifting={true}
     barStyle={{ backgroundColor: Color.PRIMARY }}
@@ -139,9 +159,20 @@ const MyTab = () => (
       },
     })}
   >
-    <Tab.Screen name="Meals" component={MyStack} />
+    <Tab.Screen name="Meals" component={MyStackNavigator} />
     <Tab.Screen name="Favourites" component={FavouritesStack} />
   </Tab.Navigator>
 );
 
-export { MyStack, MyTab };
+const Drawer = createDrawerNavigator();
+
+const MyDrawerNavigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Favourites" component={FavouritesStack} />
+      <Drawer.Screen name="Filter" component={FilterStack} />
+    </Drawer.Navigator>
+  );
+};
+
+export { MyStackNavigator, MyTabNavigator };
