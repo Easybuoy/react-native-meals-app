@@ -103,7 +103,26 @@ const FavouritesStack = ({ prop }) => {
         headerBackTitle: "Back",
       }}
     >
-      <Stack.Screen name="Your Favourites" component={Favourites} />
+      <Stack.Screen
+        name="Your Favourites"
+        component={Favourites}
+        options={({ navigation }) => {
+          {
+            return {
+              title: "Meal Categories",
+              headerLeft: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                  <Item
+                    title="Favourite"
+                    iconName="ios-menu"
+                    onPress={() => navigation.toggleDrawer()}
+                  />
+                </HeaderButtons>
+              ),
+            };
+          }
+        }}
+      />
       <Stack.Screen
         name="Meal Detail"
         component={MealDetail}
@@ -142,7 +161,26 @@ const FilterStack = ({ prop }) => {
         headerBackTitle: "Back",
       }}
     >
-      <Stack.Screen name="Filters" component={Filters} />
+      <Stack.Screen
+        name="Filters"
+        component={Filters}
+        options={({ navigation }) => {
+          {
+            return {
+              title: "Filters",
+              headerLeft: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                  <Item
+                    title="Filter Meals"
+                    iconName="ios-menu"
+                    onPress={() => navigation.toggleDrawer()}
+                  />
+                </HeaderButtons>
+              ),
+            };
+          }
+        }}
+      />
     </Stack.Navigator>
   );
 };
