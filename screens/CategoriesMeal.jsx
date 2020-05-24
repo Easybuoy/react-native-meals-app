@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
+import MealList from "../components/MealList";
 import Meal from "../models/meal";
 const CategoriesMeal = ({ navigation, route }) => {
   const { categoryId } = route.params;
@@ -31,15 +31,7 @@ const CategoriesMeal = ({ navigation, route }) => {
       />
     );
   };
-  return (
-    <View style={styles.screen}>
-      <FlatList
-        data={displayMeals}
-        renderItem={renderMealItem}
-        style={{ width: "100%" }}
-      />
-    </View>
-  );
+  return <MealList data={displayMeals} renderItem={renderMealItem} />;
 };
 
 CategoriesMeal.navigationOptions = (navigationData) => {
@@ -49,13 +41,4 @@ CategoriesMeal.navigationOptions = (navigationData) => {
   };
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    padding: 10,
-  },
-});
 export default CategoriesMeal;

@@ -75,6 +75,45 @@ const MyStack = ({ prop }) => {
   );
 };
 
+const FavouritesStack = ({ prop }) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor:
+            Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
+        },
+        headerTintColor:
+          Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
+        headerBackTitle: "Back",
+      }}
+    >
+      <Stack.Screen name="Your Favourites" component={Favourites} />
+      <Stack.Screen
+        name="Meal Detail"
+        component={MealDetail}
+        options={({ route }) => {
+          const { mealId } = route.params;
+
+          const selectedCategory = MEALS.find((meal) => meal.id === mealId);
+          return {
+            title: selectedCategory.title,
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                  title="Favourite"
+                  iconName="ios-star"
+                  onPress={() => console.log("aa")}
+                />
+              </HeaderButtons>
+            ),
+          };
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const Tab =
   Platform.OS === "android"
     ? createMaterialBottomTabNavigator()
@@ -101,7 +140,7 @@ const MyTab = () => (
     })}
   >
     <Tab.Screen name="Meals" component={MyStack} />
-    <Tab.Screen name="Favourites" component={Favourites} />
+    <Tab.Screen name="Favourites" component={FavouritesStack} />
   </Tab.Navigator>
 );
 
