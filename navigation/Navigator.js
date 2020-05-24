@@ -34,8 +34,21 @@ const MyStackNavigator = ({ prop }) => {
       <Stack.Screen
         name="home"
         component={Categories}
-        options={{
-          title: "Meal Categories",
+        options={({ navigation }) => {
+          {
+            return {
+              title: "Meal Categories",
+              headerLeft: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                  <Item
+                    title="Favourite"
+                    iconName="ios-menu"
+                    onPress={() => navigation.toggleDrawer()}
+                  />
+                </HeaderButtons>
+              ),
+            };
+          }
         }}
       />
       <Stack.Screen
@@ -169,10 +182,10 @@ const Drawer = createDrawerNavigator();
 const MyDrawerNavigator = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Favourites" component={FavouritesStack} />
+      <Drawer.Screen name="Meals Favourite" component={MyTabNavigator} />
       <Drawer.Screen name="Filter" component={FilterStack} />
     </Drawer.Navigator>
   );
 };
 
-export { MyStackNavigator, MyTabNavigator };
+export { MyStackNavigator, MyTabNavigator, MyDrawerNavigator };

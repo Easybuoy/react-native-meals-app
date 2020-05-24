@@ -4,7 +4,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { MyTabNavigator } from "./navigation/Navigator";
+import { MyTabNavigator, MyDrawerNavigator } from "./navigation/Navigator";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -27,7 +27,8 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
-        <MyTabNavigator />
+        <MyDrawerNavigator />
+        {/* <MyTabNavigator /> */}
       </NavigationContainer>
     </>
   );
