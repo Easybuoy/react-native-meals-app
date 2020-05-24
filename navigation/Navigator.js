@@ -82,6 +82,8 @@ const Tab =
 
 const MyTab = () => (
   <Tab.Navigator
+    shifting={true}
+    barStyle={{ backgroundColor: Color.PRIMARY }}
     tabBarOptions={{ activeTintColor: Color.SECONDARY }}
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
