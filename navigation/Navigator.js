@@ -167,11 +167,11 @@ const FilterStack = ({ prop }) => {
         options={({ navigation }) => {
           {
             return {
-              title: "Filters",
+              title: "Filter Meals",
               headerLeft: () => (
                 <HeaderButtons HeaderButtonComponent={HeaderButton}>
                   <Item
-                    title="Filter Meals"
+                    title="Filter"
                     iconName="ios-menu"
                     onPress={() => navigation.toggleDrawer()}
                   />
