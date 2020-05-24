@@ -1,11 +1,31 @@
 import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
-const MealList = ({ data , renderItem}) => {
+
+import MealItem from "./MealItem";
+
+const MealList = ({ data, navigation }) => {
+  const renderMealItem = (itemData) => {
+    return (
+      <MealItem
+        title={itemData.item.title}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordability={itemData.item.affordability}
+        image={itemData.item.imageUrl}
+        onSelectMeal={() => {
+          navigation.navigate("Meal Detail", {
+            mealId: itemData.item.id,
+          });
+        }}
+      />
+    );
+  };
+
   return (
     <View style={styles.screen}>
       <FlatList
         data={data}
-        renderItem={renderItem}
+        renderItem={renderMealItem}
         style={{ width: "100%" }}
       />
     </View>
