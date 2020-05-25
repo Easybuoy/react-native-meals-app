@@ -18,19 +18,19 @@ import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 const Stack = createStackNavigator();
 
+const stackScreenOptionsStyle = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
+  },
+  headerTitleStyle: { fontFamily: "open-sans-bold" },
+  headerTintColor: Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
+  headerBackTitle: "Back",
+  headerBackTitleStyle: { fontFamily: "open-sans" },
+};
+
 const MyStackNavigator = ({ prop }) => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor:
-            Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
-        },
-        headerTintColor:
-          Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
-        headerBackTitle: "Back",
-      }}
-    >
+    <Stack.Navigator screenOptions={stackScreenOptionsStyle}>
       <Stack.Screen
         name="home"
         component={Categories}
@@ -92,17 +92,7 @@ const MyStackNavigator = ({ prop }) => {
 
 const FavouritesStack = ({ prop }) => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor:
-            Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
-        },
-        headerTintColor:
-          Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
-        headerBackTitle: "Back",
-      }}
-    >
+    <Stack.Navigator screenOptions={stackScreenOptionsStyle}>
       <Stack.Screen
         name="Your Favourites"
         component={Favourites}
@@ -150,17 +140,7 @@ const FavouritesStack = ({ prop }) => {
 
 const FilterStack = ({ prop }) => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor:
-            Platform.OS === "android" ? Color.PRIMARY : Color.WHITE,
-        },
-        headerTintColor:
-          Platform.OS === "android" ? Color.WHITE : Color.PRIMARY,
-        headerBackTitle: "Back",
-      }}
-    >
+    <Stack.Navigator screenOptions={stackScreenOptionsStyle}>
       <Stack.Screen
         name="Filters"
         component={Filters}
@@ -194,7 +174,12 @@ const MyTabNavigator = () => (
   <Tab.Navigator
     shifting={true}
     barStyle={{ backgroundColor: Color.PRIMARY }}
-    tabBarOptions={{ activeTintColor: Color.SECONDARY }}
+    tabBarOptions={{
+      activeTintColor: Color.SECONDARY,
+      labelStyle: {
+        fontFamily: "open-sans",
+      },
+    }}
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
@@ -220,7 +205,10 @@ const Drawer = createDrawerNavigator();
 const MyDrawerNavigator = () => {
   return (
     <Drawer.Navigator
-      drawerContentOptions={{ activeTintColor: Color.SECONDARY, labelStyle: {fontFamily: 'open-sans-bold'}}}
+      drawerContentOptions={{
+        activeTintColor: Color.SECONDARY,
+        labelStyle: { fontFamily: "open-sans-bold" },
+      }}
     >
       <Drawer.Screen name="Meals" component={MyTabNavigator} />
       <Drawer.Screen name="Filter" component={FilterStack} />
