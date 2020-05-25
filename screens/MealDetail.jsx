@@ -21,7 +21,14 @@ const MealDetail = ({ route }) => {
 
       <Text style={styles.title}>Ingredients</Text>
 
+      {selectedMeal.ingredients.map((ingredient) => (
+        <Text key={ingredient}>* {ingredient}</Text>
+      ))}
+      
       <Text style={styles.title}>Steps</Text>
+      {selectedMeal.steps.map((step) => (
+        <Text key={step}>* {step}</Text>
+      ))}
     </ScrollView>
   );
 };
@@ -35,6 +42,11 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
+  },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 22,
+    textAlign: "center",
   },
 });
 export default MealDetail;
