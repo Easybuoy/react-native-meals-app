@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Platform, Text } from "react-native";
+import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -69,11 +69,9 @@ const MyStackNavigator = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealId } = route.params;
-
-          const selectedCategory = MEALS.find((meal) => meal.id === mealId);
+          const { mealTitle } = route.params;
           return {
-            title: selectedCategory.title,
+            title: mealTitle,
             headerRight: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
@@ -117,11 +115,10 @@ const FavouritesStack = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealId } = route.params;
+          const { mealTitle } = route.params;
 
-          const selectedCategory = MEALS.find((meal) => meal.id === mealId);
           return {
-            title: selectedCategory.title,
+            title: mealTitle,
             headerRight: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item

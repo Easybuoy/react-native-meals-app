@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -9,12 +9,16 @@ const ListItem = (props) => (
     <DefaultText>{props.children}</DefaultText>
   </View>
 );
-const MealDetail = ({ route }) => {
+const MealDetail = ({ route, navigation }) => {
   const { mealId } = route.params;
-  console.log(mealId);
 
   const availableMeals = useSelector((state) => state.meals.meals);
   const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
+
+  useEffect(() => {
+    navigation.setParams({ mealTitle: selectedMeal.title });
+  }, [selectedMeal]);
+   
   return (
     <ScrollView>
       <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
