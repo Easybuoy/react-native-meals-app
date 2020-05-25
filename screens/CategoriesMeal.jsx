@@ -1,16 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import { CATEGORIES, MEALS } from "../data/dummy-data";
+import { CATEGORIES } from "../data/dummy-data";
 import MealList from "../components/MealList";
 
 const CategoriesMeal = ({ navigation, route }) => {
+  const availableMeals = useSelector((state) => state.meals.filteredMeals);
+
   const { categoryId } = route.params;
 
   const selectedCategory = CATEGORIES.find(
     (category) => category.id === categoryId
   );
 
-  const displayMeals = MEALS.filter(
+  const displayMeals = availableMeals.filter(
     (meal) => meal.categoryId.indexOf(categoryId) >= 0
   );
 
@@ -18,7 +21,6 @@ const CategoriesMeal = ({ navigation, route }) => {
 };
 
 CategoriesMeal.navigationOptions = (navigationData) => {
-  console.log(navigationData);
   return {
     title: "Choi",
   };
