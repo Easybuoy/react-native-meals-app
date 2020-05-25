@@ -219,8 +219,10 @@ const Drawer = createDrawerNavigator();
 
 const MyDrawerNavigator = () => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Meals Favourite" component={MyTabNavigator} />
+    <Drawer.Navigator
+      drawerContentOptions={{ activeTintColor: Color.SECONDARY, labelStyle: {fontFamily: 'open-sans-bold'}}}
+    >
+      <Drawer.Screen name="Meals" component={MyTabNavigator} />
       <Drawer.Screen name="Filter" component={FilterStack} />
     </Drawer.Navigator>
   );
