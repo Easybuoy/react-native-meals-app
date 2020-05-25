@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, StyleSheet, Switch, Platform } from "react-native";
 
 import Color from "../constants/Color";
@@ -14,12 +14,29 @@ const FilterSwitch = ({ label, onChange, state }) => (
     />
   </View>
 );
-const Filters = () => {
+
+const Filters = ({ navigation }) => {
   const [isGluttonFree, setIsGluttonFree] = useState(false);
   const [isLactoseFree, setIsLactoseFree] = useState(false);
   const [isVeaganFree, setIsVeaganFree] = useState(false);
   const [isVegetarianFree, setIsVegetarian] = useState(false);
 
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
+
+  const saveFilters = useCallback(() => {
+    const appliedFilters = {
+      gluttonFree: isGluttonFree,
+      lactoseFree: isLactoseFree,
+      veaganFree: isVeaganFree,
+      vegetarianFree: isVegetarianFree,
+    };
+
+    console.log(appliedFilters);
+  }, [isGluttonFree, isLactoseFree, isVegetarianFree, isVeaganFree]);
+  console.log('=')
+  
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Available Filters</Text>

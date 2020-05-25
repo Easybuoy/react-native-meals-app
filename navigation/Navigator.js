@@ -144,7 +144,7 @@ const FilterStack = ({ prop }) => {
       <Stack.Screen
         name="Filters"
         component={Filters}
-        options={({ navigation }) => {
+        options={({ navigation, route }) => {
           {
             return {
               title: "Filter Meals",
@@ -162,7 +162,7 @@ const FilterStack = ({ prop }) => {
                   <Item
                     title="Save"
                     iconName="ios-save"
-                    onPress={() => console.log('savin')}
+                    onPress={route.params.save}
                   />
                 </HeaderButtons>
               ),
