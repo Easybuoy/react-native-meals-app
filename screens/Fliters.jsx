@@ -1,10 +1,22 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Switch } from "react-native";
+
+import Color from "../constants/Color";
 
 const Filters = () => {
+  const [isGluttonFree, setIsGluttonFree] = useState(false);
   return (
     <View style={styles.screen}>
-      <Text>Filters Screen</Text>
+      <Text style={styles.title}>Available Filters</Text>
+
+      <View style={styles.filterContainer}>
+        <Text>Glutton-free</Text>
+        <Switch
+          value={isGluttonFree}
+          onValueChange={(newValue) => setIsGluttonFree(newValue)}
+          trackColor={{ true: Color.PRIMARY }}
+        />
+      </View>
     </View>
   );
 };
@@ -12,8 +24,19 @@ const Filters = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 22,
+    margin: 20,
+    textAlign: "center",
+  },
+  filterContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "80%",
   },
 });
 export default Filters;
