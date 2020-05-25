@@ -69,16 +69,15 @@ const MyStackNavigator = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealTitle, toggleFav } = route.params;
+          const { mealTitle, toggleFav, isFav } = route.params;
 
-          console.log(toggleFav, "==");
           return {
             title: mealTitle,
             headerRight: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
                   title="Favourite"
-                  iconName="ios-star"
+                  iconName={isFav ? "ios-star" : "ios-star-outline"}
                   onPress={toggleFav}
                 />
               </HeaderButtons>
@@ -117,15 +116,17 @@ const FavouritesStack = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealTitle, toggleFav } = route.params;
-          console.log(toggleFav, "==");
+          const { mealTitle, toggleFav, isFav } = route.params;
+
           return {
             title: mealTitle,
             headerRight: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
                   title="Favourite"
-                  iconName="ios-star"
+                  iconName={
+                    isFav ? "ios-star" : "ios-star-outline"
+                  }
                   onPress={toggleFav}
                 />
               </HeaderButtons>
