@@ -151,9 +151,18 @@ const FilterStack = ({ prop }) => {
               headerLeft: () => (
                 <HeaderButtons HeaderButtonComponent={HeaderButton}>
                   <Item
-                    title="Filter"
+                    title="Menu"
                     iconName="ios-menu"
                     onPress={() => navigation.toggleDrawer()}
+                  />
+                </HeaderButtons>
+              ),
+              headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                  <Item
+                    title="Save"
+                    iconName="ios-save"
+                    onPress={() => console.log('savin')}
                   />
                 </HeaderButtons>
               ),
