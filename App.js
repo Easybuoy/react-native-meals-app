@@ -3,9 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStore, combineReducers } from 'redux';
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 import { MyTabNavigator, MyDrawerNavigator } from "./navigation/Navigator";
+import store from './store'
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -26,12 +28,11 @@ export default function App() {
     );
   }
   return (
-    <>
+    <Provider store={store}>
       <NavigationContainer>
         <MyDrawerNavigator />
-        {/* <MyTabNavigator /> */}
       </NavigationContainer>
-    </>
+    </Provider>
   );
 }
 
