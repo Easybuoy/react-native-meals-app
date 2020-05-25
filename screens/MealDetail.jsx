@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
+import { useSelector } from "react-redux";
 
 import DefaultText from "../components/DefaultText";
-import { MEALS } from "../data/dummy-data";
 
 const ListItem = (props) => (
   <View style={styles.listItem}>
@@ -13,7 +13,8 @@ const MealDetail = ({ route }) => {
   const { mealId } = route.params;
   console.log(mealId);
 
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const availableMeals = useSelector((state) => state.meals.meals);
+  const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
   return (
     <ScrollView>
       <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
