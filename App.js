@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import { MyTabNavigator, MyDrawerNavigator } from "./navigation/Navigator";
