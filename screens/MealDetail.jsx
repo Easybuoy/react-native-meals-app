@@ -20,8 +20,7 @@ const MealDetail = ({ route, navigation }) => {
 
   const toggleFavouriteHandler = useCallback(() => {
     dispatch(toggleFavourite(mealId));
-  }, [dispatch, mealId])
-}
+  }, [dispatch, mealId]);
 
   useEffect(() => {
     navigation.setParams({ toggleFav: toggleFavouriteHandler });
