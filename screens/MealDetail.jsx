@@ -4,6 +4,11 @@ import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
 import DefaultText from "../components/DefaultText";
 import { MEALS } from "../data/dummy-data";
 
+const ListItem = (props) => (
+  <View style={styles.listItem}>
+    <DefaultText>{props.children}</DefaultText>
+  </View>
+);
 const MealDetail = ({ route }) => {
   const { mealId } = route.params;
   console.log(mealId);
@@ -21,13 +26,13 @@ const MealDetail = ({ route }) => {
 
       <Text style={styles.title}>Ingredients</Text>
 
-      {selectedMeal.ingredients.map((ingredient) => (
-        <Text key={ingredient}>* {ingredient}</Text>
+      {selectedMeal.ingredients.map((ingredient, i) => (
+        <ListItem key={ingredient}>{ingredient}</ListItem>
       ))}
-      
+
       <Text style={styles.title}>Steps</Text>
       {selectedMeal.steps.map((step) => (
-        <Text key={step}>* {step}</Text>
+        <ListItem key={step}>{step}</ListItem>
       ))}
     </ScrollView>
   );
@@ -47,6 +52,13 @@ const styles = StyleSheet.create({
     fontFamily: "open-sans-bold",
     fontSize: 22,
     textAlign: "center",
+  },
+  listItem: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    padding: 10,
   },
 });
 export default MealDetail;
