@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Switch } from "react-native";
+import { View, Text, StyleSheet, Switch, Platform } from "react-native";
 
 import Color from "../constants/Color";
 
@@ -15,6 +15,7 @@ const Filters = () => {
           value={isGluttonFree}
           onValueChange={(newValue) => setIsGluttonFree(newValue)}
           trackColor={{ true: Color.PRIMARY }}
+          thumbColor={Platform.OS === "android" ? Color.PRIMARY : ""}
         />
       </View>
     </View>
