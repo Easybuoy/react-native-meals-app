@@ -21,10 +21,6 @@ const Filters = ({ navigation }) => {
   const [isVeaganFree, setIsVeaganFree] = useState(false);
   const [isVegetarianFree, setIsVegetarian] = useState(false);
 
-  useEffect(() => {
-    navigation.setParams({ save: saveFilters });
-  }, [saveFilters]);
-
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       gluttonFree: isGluttonFree,
@@ -35,8 +31,11 @@ const Filters = ({ navigation }) => {
 
     console.log(appliedFilters);
   }, [isGluttonFree, isLactoseFree, isVegetarianFree, isVeaganFree]);
-  console.log('=')
-  
+
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
+
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Available Filters</Text>

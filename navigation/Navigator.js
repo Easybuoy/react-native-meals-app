@@ -145,6 +145,7 @@ const FilterStack = ({ prop }) => {
         name="Filters"
         component={Filters}
         options={({ navigation, route }) => {
+          console.log(route.params);
           {
             return {
               title: "Filter Meals",
@@ -162,7 +163,7 @@ const FilterStack = ({ prop }) => {
                   <Item
                     title="Save"
                     iconName="ios-save"
-                    onPress={route.params.save}
+                    onPress={() => route.params.save()}
                   />
                 </HeaderButtons>
               ),
