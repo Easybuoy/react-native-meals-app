@@ -69,7 +69,9 @@ const MyStackNavigator = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealTitle } = route.params;
+          const { mealTitle, toggleFav } = route.params;
+
+          console.log(toggleFav, "==");
           return {
             title: mealTitle,
             headerRight: () => (
@@ -77,7 +79,7 @@ const MyStackNavigator = ({ prop }) => {
                 <Item
                   title="Favourite"
                   iconName="ios-star"
-                  onPress={() => console.log("aa")}
+                  onPress={toggleFav}
                 />
               </HeaderButtons>
             ),
@@ -115,8 +117,8 @@ const FavouritesStack = ({ prop }) => {
         name="Meal Detail"
         component={MealDetail}
         options={({ route }) => {
-          const { mealTitle } = route.params;
-
+          const { mealTitle, toggleFav } = route.params;
+          console.log(toggleFav, "==");
           return {
             title: mealTitle,
             headerRight: () => (
@@ -124,7 +126,7 @@ const FavouritesStack = ({ prop }) => {
                 <Item
                   title="Favourite"
                   iconName="ios-star"
-                  onPress={() => console.log("aa")}
+                  onPress={toggleFav}
                 />
               </HeaderButtons>
             ),
