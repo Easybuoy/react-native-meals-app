@@ -1,10 +1,10 @@
 import React from "react";
-
-import { MEALS } from "../data/dummy-data";
+import { useSelector } from "react-redux";
 import MealList from "../components/MealList";
 
 const Favourites = ({ navigation }) => {
-  const favMeals = MEALS.filter((meal) => meal.id === "m1" || meal.id === "m2");
+  const favMeals = useSelector((state) => state.meals.favouriteMeals);
+
   return <MealList data={favMeals} navigation={navigation} />;
 };
 
