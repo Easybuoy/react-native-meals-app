@@ -124,9 +124,7 @@ const FavouritesStack = ({ prop }) => {
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
                   title="Favourite"
-                  iconName={
-                    isFav ? "ios-star" : "ios-star-outline"
-                  }
+                  iconName={isFav ? "ios-star" : "ios-star-outline"}
                   onPress={toggleFav}
                 />
               </HeaderButtons>
@@ -145,7 +143,6 @@ const FilterStack = ({ prop }) => {
         name="Filters"
         component={Filters}
         options={({ navigation, route }) => {
-          console.log(route.params);
           {
             return {
               title: "Filter Meals",
